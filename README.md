@@ -251,13 +251,12 @@ singleExecutorService.execute(runnable1);
 
 #### 对比LinkedBlockingQueue和ArrayBlockingQueue区别结论:
  (1)都是阻塞队列.
-<br/>
  (2)存储数据方式不一样:ArrayBlockingQueue使用数组方式,并且使用两个下标来表明取出数据的位置和加入数据的位置.
 LinkedBlockingQueue使用的是单项链表方式存储数据,使用头和尾节点来指明链表取出数据和加入数据的地方,并且头节点不存储数据.
-都通过变量来记录存储数据的数量:ArrayBlockingQueue使用int变量来记录存储数据数量,而LinkedBlockingQueue使用线程安全的AtomicInteger来记录数据数量,很显然AtomicInteger的效率更低.<br/>
+都通过变量来记录存储数据的数量:ArrayBlockingQueue使用int变量来记录存储数据数量,而LinkedBlockingQueue使用线程安全的AtomicInteger来记录数据数量,很显然AtomicInteger的效率更低.
 (3)由于ArrayBlockingQueue采用数组方式存储数据,所以其最大容易是在定义ArrayBlockingQueue的时候就已经确定的.不能再次修改.
-而LinkedBlockingQueue采用链表存储数据,所以其容易可以不用指定.<br/>
-(4)向对来说,由于ArrayBlockingQueue采用数组来存储数据,所有在加入数据和获取数据时候效率都会更高.<br/>
+而LinkedBlockingQueue采用链表存储数据,所以其容易可以不用指定.
+(4)向对来说,由于ArrayBlockingQueue采用数组来存储数据,所有在加入数据和获取数据时候效率都会更高.
 (5)都是使用ReentrantLock来实现线程安全,不过LinkedBlockingQueue采用了两个重入锁,并且使用了 AtomicInteger,所以相对来说实现同步ArrayBlockingQueue更简单效率更高.
 
 
